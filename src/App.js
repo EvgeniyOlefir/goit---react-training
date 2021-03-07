@@ -7,8 +7,7 @@ import Content from "./components/Content";
 // import tabs from "./tabs.json";
 // import Header from "./Header";
 import Navigation from "./components/Navigation/Navigation";
-// import BookList from "./components/Booklist/BookList";
-// import books from "./books.json";
+
 import "./App.scss";
 
 // import Clock from "./components/Clock";
@@ -32,7 +31,7 @@ class App extends Component {
         <Content />
 
         {/* <Header /> */}
-        {/* <BookList books={books} />
+        {/* 
         <Tabs items={tabs} />
         {/* <Clock /> */}
         {/* <button type="button" onClick={this.toggleModal}>
