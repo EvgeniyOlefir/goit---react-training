@@ -1,7 +1,11 @@
 import UserDetailsPage from "./components/UserDetailsPage";
-import CountersPage from "./components/CountersPage";
+import CountersPage from "./components/Counter/CountersPage";
 import { Component } from "react";
 import Modal from "./components/Modal";
+import Tabs from "./components/Tabs";
+import tabs from "./tabs.json";
+
+// import Clock from "./components/Clock";
 
 class App extends Component {
   state = {
@@ -13,10 +17,13 @@ class App extends Component {
       showModal: !showModal,
     }));
   };
+
   render() {
     const { showModal } = this.state;
     return (
       <div className="App">
+        <Tabs items={tabs} />
+        {/* <Clock /> */}
         <button type="button" onClick={this.toggleModal}>
           Открыть модалку
         </button>
