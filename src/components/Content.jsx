@@ -1,18 +1,16 @@
-import HomePage from "../pages/HomePage";
-import UsersPage from "../pages/UsersPage";
-import HomeWorksPage from "../pages/HomeWorksPage";
-import AboutPage from "../pages/AboutPage";
-import BooksPage from "../pages/BooksPage";
+import { routes } from "../routes";
+import styles from "./content.module.scss";
 
 const Content = () => {
   const { pathname } = window.location;
   return (
-    <div className="content">
-      {pathname === "/" && <HomePage />}
+    <div className={styles.content}>
+      {routes.map(({ path, component: Component }) => pathname === path && <Component />)}
+      {/* {pathname === "/" && <HomePage />}
       {pathname === "/users-page" && <UsersPage />}
       {pathname === "/home-works" && <HomeWorksPage />}
       {pathname === "/about" && <AboutPage />}
-      {pathname === "/books" && <BooksPage />}
+      {pathname === "/books" && <BooksPage />} */}
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import BookItem from "./BookItem";
+import PropTypes from "prop-types";
 
 const BookList = ({ books }) => (
   <ul>
@@ -8,5 +9,18 @@ const BookList = ({ books }) => (
     ))}
   </ul>
 );
+
+BookList.propType = {
+  books: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      // name: PropTypes.string
+    })
+  ),
+};
+
+BookList.defaultProps = {
+  books: [],
+};
 
 export default BookList;
