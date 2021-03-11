@@ -5,7 +5,9 @@ const Content = () => {
   const { pathname } = window.location;
   return (
     <div className={styles.content}>
-      {routes.map(({ path, component: Component }) => pathname === path && <Component />)}
+      {routes.map(
+        ({ path, component: Component }) => pathname === path && <Component key={path} />
+      )}
       {/* {pathname === "/" && <HomePage />}
       {pathname === "/users-page" && <UsersPage />}
       {pathname === "/home-works" && <HomeWorksPage />}

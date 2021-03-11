@@ -1,38 +1,34 @@
 import { createUseStyles } from "react-jss";
+import PropTypes from "prop-types";
 
 const useStyles = createUseStyles({
-  link: {
+  link: (isActive) => ({
+    backgroundColor: isActive ? "#2f2e73" : "inherit",
     textDecoration: "none",
     padding: "10px",
-    color: "#000",
+    color: isActive ? "#fff" : "#000",
 
     "&:hover": {
-      backgroundColor: "#e0dff2",
+      backgroundColor: isActive ? "#151433" : "#e0dff2",
     },
-  },
-
-  activeLink: {
-    backgroundColor: "#2f2e73",
-    color: "#fff",
-
-    "&:hover": {
-      backgroundColor: "#151433",
-    },
-  },
+  }),
 });
 
 const NavLink = ({ path, label }) => {
-  const classes = useStyles();
   const { pathname } = window.location;
+  const isActive = pathname === path;
+  const classes = useStyles(isActive);
 
   return (
-    <a
-      className={[classes.link, pathname === path ? classes.activeLink : ""].join(" ")}
-      href={path}
-    >
+    <a className={classes.link} href={path}>
       {label}
     </a>
   );
+};
+
+NavLink.propTypes = {
+  path: PropTypes.string,
+  label: PropTypes.string,
 };
 
 export default NavLink;
