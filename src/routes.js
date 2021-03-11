@@ -3,8 +3,8 @@ import UsersPage from "./pages/UsersPage";
 import HomeWorksPage from "./pages/HomeWorksPage";
 import AboutPage from "./pages/AboutPage";
 import BooksPage from "./pages/BooksPage";
+import CountersPage from "./pages/CountersPage";
 import UserDetailsPage from "./pages/UserDetailsPage";
-
 export const routes = [
   {
     path: "/",
@@ -30,6 +30,11 @@ export const routes = [
     path: "/user-details",
     label: "User Details",
     component: UserDetailsPage,
+  },
+  {
+    path: "/counters",
+    label: "Counters",
+    component: CountersPage,
   },
   {
     path: "/books",
