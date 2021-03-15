@@ -5,6 +5,8 @@ import AboutPage from "./pages/AboutPage";
 import BooksPage from "./pages/BooksPage";
 import CountersPage from "./pages/CountersPage";
 import UserDetailsPage from "./pages/UserDetailsPage";
+import TodosPage from "./pages/TodosPage";
+
 export const routes = [
   {
     path: "/",
@@ -40,5 +42,10 @@ export const routes = [
     path: "/books",
     label: "BooksPage",
     component: BooksPage,
+  },
+  {
+    path: "/todos",
+    label: "Todos",
+    component: TodosPage,
   },
 ];
