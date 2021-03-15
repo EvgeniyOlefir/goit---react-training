@@ -11,5 +11,6 @@ export default createUseStyles({
     },
     padding: 10,
     width: 200,
+    overflow: "auto",
   },
 });

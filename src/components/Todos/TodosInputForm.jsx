@@ -1,7 +1,7 @@
 import { useState } from "react";
 import s from "../Todos/todosInputForm.module.scss";
 
-const TodosInputForm = () => {
+const TodosInputForm = ({ onSubmit }) => {
   const [showForm, setShowForm] = useState(false);
   const [value, setValue] = useState("");
   const [urgency, setUrgency] = useState("low");
@@ -11,6 +11,21 @@ const TodosInputForm = () => {
   const handleUrgencyChange = (e) => setUrgency(e.target.value);
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!value) return;
+
+    const newTodo = {
+      id: Date.now(),
+      value,
+      urgency,
+      date: Date.now(),
+      isDone: false,
+    };
+
+    onSubmit(newTodo);
+    setValue("");
+    setUrgency("low");
+    setShowForm(false);
   };
 
   return (

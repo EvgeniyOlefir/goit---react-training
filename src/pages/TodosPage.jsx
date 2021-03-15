@@ -1,12 +1,35 @@
-import TodosList from "../components/Todos/TodosList";
-import TodosInputForm from "../components/Todos/TodosInputForm";
+import { useState } from 'react';
+import TodosList from '../components/Todos/TodosList';
+import TodosInputForm from '../components/Todos/TodosInputForm';
 
 const TodosPage = () => {
+  const [todos, setTodos] = useState([]);
+  const handleSubmit = todo => {
+    if (todos.find(({ value }) => value === todo.value)) return;
+
+    setTodos(prevState => [todo, ...prevState]);
+  };
+
+  const handleDeleteTodo = id =>
+    setTodos(prevState => prevState.filter(todo => todo.id !== id));
+
+  const handleToggleTodo = id => {
+    setTodos(prevState =>
+      prevState.map(todo =>
+        todo.id === id ? { ...todo, isDone: !todo.isDone } : todo,
+      ),
+    );
+  };
+
   return (
     <div>
       <h1>Todos</h1>
-      <TodosInputForm />
-      <TodosList />
+      <TodosInputForm onSubmit={handleSubmit} />
+      <TodosList
+        todos={todos}
+        onDelete={handleDeleteTodo}
+        onToggle={handleToggleTodo}
+      />
     </div>
   );
 };
