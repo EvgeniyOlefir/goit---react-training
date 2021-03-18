@@ -1,5 +1,5 @@
 // import { routes } from '../routes';
-import { Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import styles from './content.module.scss';
 import UsersPage from '../pages/UsersPage';
 import HomePage from '../pages/HomePage';
@@ -22,11 +22,14 @@ const Content = () => {
       {pathname === "/home-works" && <HomeWorksPage />}
       {pathname === "/about" && <AboutPage />}
       {pathname === "/books" && <BooksPage />} */}
-      <Route path="/" exact component={HomePage} />
-      <Route path="/users-page" component={UsersPage} />
-      <Route path="/user-details" component={UserDetailsPage} />
-      <Route path="/books" component={BooksPage} />
-      <Route path="/todos" component={TodosPage} />
+      <Switch>
+        <Route path="/" exact component={HomePage} />
+        <Route path="/users-page" component={UsersPage} />
+        <Route path="/users-page/:id" component={UserDetailsPage} />
+        <Route path="/books" component={BooksPage} />
+        <Route path="/todos" component={TodosPage} />
+        <Redirect to="/" />
+      </Switch>
     </div>
   );
 };
